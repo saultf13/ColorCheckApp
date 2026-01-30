@@ -1,3 +1,4 @@
+import { copyColorClipboard } from "@/lib/color-utils"
 import { type ContrastResult } from "@/lib/contrast"
 
 interface ContrastRatioProps {
@@ -30,6 +31,7 @@ export function ContrastRatio({ result, foreground, background }: ContrastRatioP
           <div
             className="w-14 h-14 rounded-xl border-2 border-border shadow-lg transition-transform hover:scale-105"
             style={{ backgroundColor: foreground }}
+            onClick={() => copyColorClipboard(foreground)}
           />
           <div className="text-left">
             <p className="text-xs text-muted-foreground uppercase tracking-wider">Texto</p>
@@ -43,6 +45,7 @@ export function ContrastRatio({ result, foreground, background }: ContrastRatioP
           <div
             className="w-14 h-14 rounded-xl border-2 border-border shadow-lg transition-transform hover:scale-105"
             style={{ backgroundColor: background }}
+            onClick={() => copyColorClipboard(background)}
           />
           <div className="text-left">
             <p className="text-xs text-muted-foreground uppercase tracking-wider">Fondo</p>

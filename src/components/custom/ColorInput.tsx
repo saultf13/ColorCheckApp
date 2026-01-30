@@ -1,10 +1,11 @@
 import React from "react"
 import { useCallback, useRef, useState } from "react"
-import { ChevronDown, ChevronUp, Pipette } from "lucide-react"
+import { ChevronDown, ChevronUp, Copy, Pipette } from "lucide-react"
 
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { isValidHex, normalizeHex, hexToRgb, rgbToHex } from "@/lib/contrast"
+import { copyColorClipboard } from "@/lib/color-utils"
 
 interface ColorInputProps {
     label: string
@@ -90,6 +91,7 @@ export function ColorInput({ label, value, onChange, description }: ColorInputPr
                                 maxLength={7}
                                 aria-label={`Valor hexadecimal para ${label}`}
                             />
+                            <Copy className="h-full mr-2 pl-2 border-l border-border" onClick={() => copyColorClipboard(displayColor)} />
                         </div>
                     </div>
 

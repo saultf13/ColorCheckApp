@@ -12,7 +12,7 @@ interface Props {
 
 export const Header = ({ foreground, background, displayFg, displayBg }: Props) => {
 
-    // Copy permalink
+    /* Copy permalink */
     const handleCopyPermalink = useCallback(() => {
         const fg = foreground.replace("#", "")
         const bg = background.replace("#", "")
@@ -23,9 +23,15 @@ export const Header = ({ foreground, background, displayFg, displayBg }: Props) 
 
     }, [foreground, background, toast])
 
-    // TODO: hacer descarga de aplicación de escritorio
+    /* Download desktop app */
+    // TODO: hacer descarga de aplicación de escritorio, cambiar el archivo .svg por el .exe correspondiente 
     const handleDownloadApp = () => {
-
+        const link = document.createElement("a");
+        link.href = "public/vite.svg";
+        link.download = "public/vite.svg";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     }
 
     return (
@@ -57,7 +63,7 @@ export const Header = ({ foreground, background, displayFg, displayBg }: Props) 
                         <Button
                             variant="outline"
                             onClick={handleDownloadApp}
-                            className="gap-2 bg-transparent hover:bg-secondary/50 self-start md:self-auto"
+                            className="cursor-pointer gap-2 bg-transparent hover:bg-secondary/50 self-start md:self-auto"
                         >
                             <Download className="w-4 h-4" />
                             Descargar app escritorio
@@ -65,7 +71,7 @@ export const Header = ({ foreground, background, displayFg, displayBg }: Props) 
                         <Button
                             variant="outline"
                             onClick={handleCopyPermalink}
-                            className="gap-2 bg-transparent hover:bg-secondary/50 self-start md:self-auto"
+                            className="cursor-pointer gap-2 bg-transparent hover:bg-secondary/50 self-start md:self-auto"
                         >
                             <Share2 className="w-4 h-4" />
                             Compartir enlace
