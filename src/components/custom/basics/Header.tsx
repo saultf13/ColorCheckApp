@@ -26,12 +26,19 @@ export const Header = ({ foreground, background, displayFg, displayBg }: Props) 
     /* Download desktop app */
     // TODO: hacer descarga de aplicación de escritorio, cambiar el archivo .svg por el .exe correspondiente 
     const handleDownloadApp = () => {
-        const link = document.createElement("a");
-        link.href = "public/vite.svg";
-        link.download = "public/vite.svg";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        // const link = document.createElement("a");
+        // link.href = "public/vite.svg";
+        // link.download = "public/vite.svg";
+        // document.body.appendChild(link);
+        // link.click();
+        // document.body.removeChild(link);
+        toast.warning("Funcionalidad en desarrollo.", {
+            position: "top-right",
+            description: "Mientras tanto puede disfrutar de nuestra aplicación web",
+            style: {
+                color: "#9B3901"
+            }
+        });
     }
 
     return (
