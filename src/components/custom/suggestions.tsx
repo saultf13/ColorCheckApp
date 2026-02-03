@@ -1,11 +1,13 @@
 import { Lightbulb, Sparkles, ArrowRight } from "lucide-react"
 import { hexToRgb, suggestColorAdjustment, checkContrast } from "@/lib/contrast"
+import { cn } from "@/lib/utils";
 
 interface SuggestionsProps {
-  foreground: string
-  background: string
-  needsSuggestion: boolean
-  onApplySuggestion: (fg: string, bg: string) => void
+  foreground: string;
+  background: string;
+  needsSuggestion: boolean;
+  previousRatio: number;
+  onApplySuggestion: (fg: string, bg: string) => void;
 }
 
 export function Suggestions({
@@ -13,6 +15,7 @@ export function Suggestions({
   background,
   needsSuggestion,
   onApplySuggestion,
+  previousRatio,
 }: SuggestionsProps) {
   if (!needsSuggestion) return null
 
@@ -102,9 +105,10 @@ export function Suggestions({
               {newRatio && (
                 <div className="text-right">
                   <div className="flex items-center gap-1">
-                    {/* TODO: Cuando la sugerencia es peor que el ratio actual no mostrar el color verde */}
-                    <Sparkles className="w-3 h-3 text-emerald-400" />
-                    <span className="text-sm font-bold text-emerald-400">{newRatio.toFixed(1)}:1</span>
+                    <span className={cn("text-sm font-bold", previousRatio < newRatio ? "text-emerald-400" : "text-red-500")}>
+                      {newRatio.toFixed(1)}:1
+                    </span>
+                    <Sparkles className={cn("w-3 h-3", previousRatio < newRatio ? "text-emerald-400" : "text-red-500")} />
                   </div>
                 </div>
               )}

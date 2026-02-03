@@ -2,8 +2,6 @@ import { useState, useMemo, useCallback, useEffect } from "react"
 import { ArrowUpDown, Eye } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ContrastRatio } from "./components/custom/contrast-ratio"
-import { PreviewSection } from "./components/custom/preview-section"
-import { Suggestions } from "./components/custom/suggestions"
 import {
     hexToRgb,
     checkContrast,
@@ -17,6 +15,8 @@ import { Header } from "./components/custom/basics/Header"
 import { Footer } from "./components/custom/basics/Footer"
 import { InfoSection } from "./components/custom/basics/InfoSection"
 import { ComplianceGrid } from "./components/custom/ComplianceGrid"
+import { PreviewSection } from "./components/custom/PreviewSection"
+import { Suggestions } from "./components/custom/suggestions"
 
 const DEFAULT_FOREGROUND = "#551A8B"
 const DEFAULT_BACKGROUND = "#D4F1F4"
@@ -165,6 +165,7 @@ export function ColorCheckApp() {
                                     background={displayBg}
                                     needsSuggestion={!result.normalAA}
                                     onApplySuggestion={handleApplySuggestion}
+                                    previousRatio={result.ratio}
                                 />
                             </div>
                         )}
@@ -187,18 +188,7 @@ export function ColorCheckApp() {
                         {result && (<ComplianceGrid result={result} />)}
 
                         {/* Preview Section */}
-                        <div className="rounded-xl border border-border bg-card/50 backdrop-blur-sm p-6">
-                            <div className="flex items-center gap-3 pb-4 border-b border-border mb-6">
-                                <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center">
-                                    <Eye className="w-5 h-5 text-foreground" />
-                                </div>
-                                <div>
-                                    <h2 className="font-semibold text-foreground">Vista Previa Detallada</h2>
-                                    <p className="text-sm text-muted-foreground">Ejemplos de uso real</p>
-                                </div>
-                            </div>
-                            <PreviewSection foreground={displayFg} background={displayBg} />
-                        </div>
+                        <PreviewSection foreground={displayFg} background={displayBg} />
                     </div>
                 </div>
 
