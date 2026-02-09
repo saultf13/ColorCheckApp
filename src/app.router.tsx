@@ -1,7 +1,7 @@
-import { createBrowserRouter } from 'react-router'
+import { createHashRouter } from 'react-router-dom'
 import { ColorCheckApp } from './ColorCheckApp'
 
-export const appRouter = createBrowserRouter([
+export const appRouter = createHashRouter([
     {
         path: '/',
         element: <ColorCheckApp />,
