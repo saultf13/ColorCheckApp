@@ -16,7 +16,7 @@ import { Footer } from "./components/custom/basics/Footer"
 import { InfoSection } from "./components/custom/basics/InfoSection"
 import { ComplianceGrid } from "./components/custom/ComplianceGrid"
 import { PreviewSection } from "./components/custom/PreviewSection"
-import { Suggestions } from "./components/custom/suggestions"
+import { Suggestions } from "./components/custom/Suggestions"
 
 const DEFAULT_FOREGROUND = "#551A8B"
 const DEFAULT_BACKGROUND = "#D4F1F4"
