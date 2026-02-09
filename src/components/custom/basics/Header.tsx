@@ -24,21 +24,26 @@ export const Header = ({ foreground, background, displayFg, displayBg }: Props) 
     }, [foreground, background, toast])
 
     /* Download desktop app */
-    // TODO: hacer descarga de aplicación de escritorio, cambiar el archivo .svg por el .exe correspondiente 
     const handleDownloadApp = () => {
-        // const link = document.createElement("a");
-        // link.href = "public/vite.svg";
-        // link.download = "public/vite.svg";
-        // document.body.appendChild(link);
-        // link.click();
-        // document.body.removeChild(link);
-        toast.warning("Funcionalidad en desarrollo.", {
-            position: "top-right",
-            description: "Mientras tanto puede disfrutar de nuestra aplicación web",
-            style: {
-                color: "#9B3901"
-            }
-        });
+        try {
+
+            const url = 'https://github.com/saultf13/ColorCheckApp/releases/download/Windows/color-checker_0.1.0_x64_en-US.msi';
+            const link = document.createElement("a");
+            link.href = url;
+            link.setAttribute('download', 'ColorCheckApp_instaler.msi');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        } catch (error) {
+            toast.warning("Error en la descarga.", {
+                position: "top-right",
+                description: "Mientras tanto puede disfrutar de nuestra aplicación web",
+                style: {
+                    color: "#9B3901"
+                }
+            });
+        }
+
     }
 
     return (
